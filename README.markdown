@@ -59,9 +59,9 @@ In your model:
 
 	class Asset < ActiveRecord::Base
 	  ...
-	  attr_accessible :document
-	  has_attached_file :document
-	  docsplit_images_conversion_for :document
+	  attr_accessible :mydocument
+	  has_attached_file :mydocument
+	  docsplit_images_conversion_for :mydocument
 	  ...
 	end
   

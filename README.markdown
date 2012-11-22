@@ -40,7 +40,7 @@ On the Mac, you can download a [http://www.pdflabs.com/docs/install-pdftk/](rece
   
 	aptitude install openoffice.org openoffice.org-java-common
   
-  On the Mac, download and install the [http://www.openoffice.org/download/index.html]latest release.
+  On the Mac, download and install the [http://www.openoffice.org/download/index.html]http://www.openoffice.org/download/index.html.
 
 ### Install Gem
 
@@ -52,17 +52,17 @@ From terminal, type the command to install
 	
 	bundle
 	rails g docsplit_images <table_name> <attachment_field_name>
-	# e.g rails generate docsplit_images asset document
+	# e.g. rails generate docsplit_images asset document
 	rake db:migrate
 
 In your model:
 
 	class Asset < ActiveRecord::Base
-    ...
-    attr_accessible :document
-    has_attached_file :document
-    docsplit_images_conversion_for :document
-    ...
+	  ...
+	  attr_accessible :document
+	  has_attached_file :document
+	  docsplit_images_conversion_for :document
+	  ...
 	end
   
 ## Accessing list of images using ``document_images_list``

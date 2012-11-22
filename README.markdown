@@ -1,6 +1,6 @@
 # docsplit_images
 
-Docsplit images is used to convert a document file (pdf, xls, xlsx, ppt, pptx, doc, docx, etc...) to a list of images combining with famouse paperclip gem
+Docsplit images is used to convert a document file (pdf, xls, xlsx, ppt, pptx, doc, docx, etc...) to a list of images combining with famous [https://github.com/thoughtbot/paperclip]paperclip gem
 
 ## Installation
 

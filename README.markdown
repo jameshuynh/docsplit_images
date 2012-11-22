@@ -72,10 +72,6 @@ In your model:
 	asset.document_images_list
 	# => ["/system/myfile_revisions/files/000/000/019/images/SBA_Admin_workflow_1.png", "/system/myfile_revisions/files/000/000/019/images/SBA_Admin_workflow_2.png", ...]
 
-Then open your browser at http://localhost:3000 and fill in username: superadmin, password: password to login
-
-* To configure email sender for devise, you can change it in ``config/config.yml`` - ``email_sender`` option
-* You can configure application name in ``config/config.yml`` - ``project_name`` option
 
 Contributing to docsplit_images
 -------------

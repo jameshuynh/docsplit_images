@@ -15,6 +15,11 @@ GEM
     arel (3.0.2)
     builder (3.0.4)
     cocaine (0.4.2)
+    delayed_job (3.0.4)
+      activesupport (~> 3.0)
+    delayed_job_active_record (0.3.2)
+      activerecord (> 2.1.0)
+      delayed_job (~> 3.0.0)
     docsplit (0.6.4)
     git (1.2.5)
     i18n (0.6.1)
@@ -48,8 +53,9 @@ PLATFORMS
 
 DEPENDENCIES
   bundler
-  docsplit
+  delayed_job_active_record (= 0.3.2)
+  docsplit (= 0.6.4)
   jeweler (~> 1.8.4)
-  paperclip
+  paperclip (= 3.3.1)
   rdoc (~> 3.12)
   shoulda

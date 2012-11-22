@@ -15,7 +15,7 @@ class DocsplitImagesGenerator < ActiveRecord::Generators::Base
   protected
 
   def migration_name
-    "add_docsplit_images_attriubute_to_#{name.underscore.pluralize}"
+    "add_docsplit_images_attribute_to_#{name.underscore.pluralize}"
   end
 
   def migration_file_name

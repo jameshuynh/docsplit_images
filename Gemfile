@@ -12,5 +12,6 @@ group :development do
   gem "jeweler", "~> 1.8.4"
 end
 
-gem 'paperclip'
-gem 'docsplit'
+gem 'paperclip', '3.3.1'
+gem 'docsplit', '0.6.4'
+gem 'delayed_job_active_record', '0.3.2'

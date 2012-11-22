@@ -1,7 +1,7 @@
 require 'rubygems'
-
+require 'docsplit_images/conversion'
 module DocsplitImages  
   class Engine < Rails::Engine
-    ActiveRecord::Base.send(:include, DocsplitImages::ClassMethods)
+    ActiveRecord::Base.send(:extend, DocsplitImages::ClassMethods)
   end
 end

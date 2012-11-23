@@ -64,7 +64,17 @@ In your model:
 	  docsplit_images_conversion_for :mydocument
 	  ...
 	end
-  
+
+## Processing Images
+
+docsplit_images requires delayed_job to be turned on the process. 
+
+	[bundle exec] rake jobs:work
+
+While it is processing using [https://github.com/collectiveidea/delayed_job]delayed_job, you can check if it is processing by accessing attribute ``is_processing_image``
+
+	asset.is_processing_image?
+
 ## Accessing list of images using ``document_images_list``
 
 ``document_images_list`` will return a list of URL of images converting from the document

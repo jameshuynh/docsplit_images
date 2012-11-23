@@ -1,6 +1,6 @@
 # docsplit_images
 
-Docsplit images is used to convert a document file (pdf, xls, xlsx, ppt, pptx, doc, docx, etc...) to a list of images combining with famous paperclip gem at [https://github.com/thoughtbot/paperclip]
+Docsplit images is used to convert a document file (pdf, xls, xlsx, ppt, pptx, doc, docx, etc...) to a list of images combining with famous paperclip gem at [https://github.com/thoughtbot/paperclip](paperclip)
 
 ## Installation
 
@@ -40,7 +40,7 @@ On the Mac, you can download a [http://www.pdflabs.com/docs/install-pdftk/](rece
   
 	aptitude install openoffice.org openoffice.org-java-common
   
-  On the Mac, download and install the [http://www.openoffice.org/download/index.html]http://www.openoffice.org/download/index.html.
+  On the Mac, download and install the [http://www.openoffice.org/download/index.html](http://www.openoffice.org/download/index.html).
 
 ### Install Gem
 
@@ -71,7 +71,7 @@ docsplit_images requires delayed_job to be turned on the process.
 
 	[bundle exec] rake jobs:work
 
-While it is processing using [https://github.com/collectiveidea/delayed_job], you can check if it is processing by accessing attribute ``is_processing_image``
+While it is processing using [https://github.com/collectiveidea/delayed_job](delayed_job), you can check if it is processing by accessing attribute ``is_processing_image``
 
 	asset.is_processing_image?
 

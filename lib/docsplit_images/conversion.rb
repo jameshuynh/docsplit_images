@@ -3,10 +3,13 @@ module DocsplitImages
     def self.included(base)
       
       base.before_save :check_for_file_change
-      base.after_save :docsplit_images      
+      base.after_save :docsplit_images
       
       def check_for_file_change
         @file_has_changed = self.file.dirty?
+        if @file_has_changed == true
+          self.is_processing_image = true
+        end
         true
       end
       
@@ -24,6 +27,7 @@ module DocsplitImages
         Docsplit.extract_images(self.send(self.class.docsplit_attachment_name).path, {:output => "#{parent_dir}/images"})
         self.number_of_images_entry = Dir.entries("#{parent_dir}/images").size - 2
         @file_has_changed = false
+        self.is_processing_image = false
         self.save(:validate => false)    
       end
       

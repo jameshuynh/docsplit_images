@@ -1,9 +1,11 @@
 class <%= migration_class_name %> < ActiveRecord::Migration
   def self.up
     add_column :<%= table_name %>, :number_of_images_entry, :integer, :default => 0
+		add_column :<%= table_name %>, :is_processing_image, :boolean, :default => false
   end
 
   def self.down
     remove_column :<%= table_name %>, :number_of_images_entry
+		remove_column :<%= table_name %>, :is_processing_image
   end
 end

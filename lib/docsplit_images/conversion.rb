@@ -6,7 +6,7 @@ module DocsplitImages
       base.after_save :docsplit_images
       
       def check_for_file_change
-        @file_has_changed = self.file.dirty?
+        @file_has_changed = self.send(self.class.docsplit_attachment_name).dirty?
         if @file_has_changed == true
           self.is_processing_image = true
         end

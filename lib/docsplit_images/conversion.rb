@@ -14,7 +14,7 @@ module DocsplitImages
       end
       
       def docsplit_images
-        if self.is_pdf_convertible? and @file_has_changed == true
+        if self.send(self.class.docsplit_attachment_name).exists? and self.is_pdf_convertible? and @file_has_changed == true
           self.delay.docsplit_images_process
         end
         true

@@ -1,5 +1,7 @@
 # docsplit_images
 
+[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/jameshuynh/docsplit_images)
+
 Docsplit images is used to convert a document file (pdf, xls, xlsx, ppt, pptx, doc, docx, etc...) to a list of images combining with famous paperclip gem at [https://github.com/thoughtbot/paperclip](paperclip)
 
 ## Installation

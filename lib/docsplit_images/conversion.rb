@@ -33,8 +33,11 @@ module DocsplitImages
       
       ## paperclip overriding
       def prepare_for_destroy
-        parent_dir = File.dirname(File.dirname(self.send(self.class.docsplit_attachment_name).path))
-        FileUtils.rm_rf("#{parent_dir}/images")
+        begin
+          parent_dir = File.dirname(File.dirname(self.send(self.class.docsplit_attachment_name).path))
+          FileUtils.rm_rf("#{parent_dir}/images")
+        rescue
+        end
         super
       end
 

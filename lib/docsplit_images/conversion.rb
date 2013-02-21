@@ -43,7 +43,7 @@ module DocsplitImages
 
       def is_pdf_convertible?
         extname = File.extname(self.send("#{self.class.docsplit_attachment_name}_file_name")).downcase.gsub(".", "")
-        return ['doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'odt', 'ods', 'odp'].index( extname ) != nil      
+        return ['doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'odt', 'ods', 'odp', 'pdf'].index( extname ) != nil      
       end
 
       def document_images_folder

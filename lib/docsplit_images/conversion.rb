@@ -24,7 +24,7 @@ module DocsplitImages
         parent_dir = File.dirname(File.dirname(self.send(self.class.docsplit_attachment_name).path))
         FileUtils.rm_rf("#{parent_dir}/images")
         FileUtils.mkdir("#{parent_dir}/images")
-        Docsplit.extract_images(self.send(self.class.docsplit_attachment_name).path, {:output => "#{parent_dir}/images"})
+        Docsplit.extract_images(self.send(self.class.docsplit_attachment_name).path, {:output => "#{parent_dir}/images"}, self.class.docsplit_attachment_options)
         self.number_of_images_entry = Dir.entries("#{parent_dir}/images").size - 2
         @file_has_changed = false
         self.is_processing_image = false
@@ -67,10 +67,12 @@ module DocsplitImages
   end
   
   module ClassMethods
-    def docsplit_images_conversion_for(attribute)
+    def docsplit_images_conversion_for(attribute, opts={})
       self.instance_eval do 
         cattr_accessor :docsplit_attachment_name
+        cattr_accessor :docsplit_attachment_options
         self.docsplit_attachment_name = attribute
+        self.docsplit_attachment_options = opts
       end      
       self.send(:include, DocsplitImages::Conversion)
     end

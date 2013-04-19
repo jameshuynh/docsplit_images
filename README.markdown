@@ -63,7 +63,7 @@ In your model:
 	  ...
 	  attr_accessible :mydocument
 	  has_attached_file :mydocument
-	  docsplit_images_conversion_for :mydocument
+	  docsplit_images_conversion_for :mydocument, {size: "800x"}
 	  ...
 	end
 

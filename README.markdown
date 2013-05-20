@@ -46,7 +46,7 @@ On the Mac, you can download a [http://www.pdflabs.com/docs/install-pdftk/](rece
 
 ### Install Gem
 
-	gem 'docsplit_images', :git => 'git@github.com:jameshuynh/docsplit_images.git', tag: "v0.1.7"
+	gem 'docsplit_images', :git => 'git@github.com:jameshuynh/docsplit_images.git', tag: "v0.1.9"
 
 ## Setting Up
 	

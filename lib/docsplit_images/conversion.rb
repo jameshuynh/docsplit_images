@@ -24,8 +24,20 @@ module DocsplitImages
         parent_dir = File.dirname(File.dirname(self.send(self.class.docsplit_attachment_name).path))
         FileUtils.rm_rf("#{parent_dir}/images")
         FileUtils.mkdir("#{parent_dir}/images")
-        Docsplit.extract_images(self.send(self.class.docsplit_attachment_name).path, self.class.docsplit_attachment_options.merge({:output => "#{parent_dir}/images"}))
-        self.number_of_images_entry = Dir.entries("#{parent_dir}/images").size - 2
+        doc_path = (self.send(self.class.docsplit_attachment_name).path        
+        ext = File.extname(doc_path)
+        temp_pdf_path = if ext.downcase == '.pdf'
+          doc
+        else
+          tempdir = File.join(Dir.tmpdir, 'docsplit')
+          Docsplit.extract_pdf([doc_path], {:output => tempdir})
+          File.join(tempdir, File.basename(doc, ext) + '.pdf')
+        end
+        self.total_number_of_pages = Docsplit.extract_length(temp_pdf_path)
+        self.save(validate: false)
+        
+        # Going to convert to images
+        Docsplit::ImageExtractor.new.extract_images(temp_pdf_path, self.class.docsplit_attachment_options.merge({:output => "#{parent_dir}/images"}))
         @file_has_changed = false
         self.is_processing_image = false
         self.save(:validate => false)    

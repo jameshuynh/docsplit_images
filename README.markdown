@@ -10,62 +10,80 @@ Docsplit images is used to convert a document file (pdf, xls, xlsx, ppt, pptx, d
   
 #### 1. Install GraphicsMagick. Its ‘gm’ command is used to generate images. Either compile it from source, or use a package manager:
 
-	[aptitude | port | brew] install graphicsmagick
-	
+```bash
+[aptitude | port | brew] install graphicsmagick
+```
+
 #### 2. Install Poppler. On Linux, use aptitude, apt-get or yum:
 
-	aptitude install poppler-utils poppler-data
+```bash
+aptitude install poppler-utils poppler-data
+```
 
 On Mac, you can install from source or use MacPorts:
 
-	sudo port install poppler | brew install poppler
+```bash
+sudo port install poppler | brew install poppler
+```
 
 #### 3. (Optional) Install Ghostscript:
 
-	[aptitude | port | brew] install ghostscript
+```bash
+[aptitude | port | brew] install ghostscript
+```
 
 Ghostscript is required to convert PDF and Postscript files. 
 
 #### 4. (Optional) Install Tesseract:
 
-	[aptitude | port | brew] install [tesseract | tesseract-ocr]
+```bash
+[aptitude | port | brew] install [tesseract | tesseract-ocr]
+```
 
 Without Tesseract installed, you'll still be able to extract text from documents, but you won't be able to automatically OCR them. 
 
 #### 5. (Optional) Install pdftk. On Linux, use aptitude, apt-get or yum:
 
-	aptitude install pdftk
+```bash
+aptitude install pdftk
+```
 	
 On the Mac, you can download a [http://www.pdflabs.com/docs/install-pdftk/](recent installer for the binary). Without pdftk installed, you can use Docsplit, but won't be able to split apart a multi-page PDF into single-page PDFs. 
 
 #### 6. (Optional) Install OpenOffice. On Linux, use aptitude, apt-get or yum:
   
-	aptitude install openoffice.org openoffice.org-java-common
-  
-  On the Mac, download and install the [http://www.openoffice.org/download/index.html](http://www.openoffice.org/download/index.html).
+```bash
+aptitude install openoffice.org openoffice.org-java-common
+```  
+
+On Mac, download and install [http://www.openoffice.org/download/index.html](http://www.openoffice.org/download/index.html).
 
 ### Install Gem
 
-	gem 'docsplit_images', :git => 'git@github.com:jameshuynh/docsplit_images.git', tag: "v0.1.9"
+	gem 'docsplit_images', :git => 'git@github.com:jameshuynh/docsplit_images.git', tag: "v0.2.0"
 
 ## Setting Up
 	
 From terminal, type the command to install
 	
-	bundle
-	rails g docsplit_images <table_name> <attachment_field_name>
-	# e.g. rails generate docsplit_images asset document
-	rake db:migrate
+```bash
+bundle
+rails g docsplit_images <table_name> <attachment_field_name>
+# e.g. rails generate docsplit_images asset document
+rake db:migrate
+```
 
 In your model:
 
-	class Asset < ActiveRecord::Base
-	  ...
-	  attr_accessible :mydocument
-	  has_attached_file :mydocument
-	  docsplit_images_conversion_for :mydocument, {size: "800x"}
-	  ...
-	end
+```ruby
+class Asset < ActiveRecord::Base
+  ...
+  attr_accessible :mydocument
+  has_attached_file :mydocument
+  docsplit_images_conversion_for :mydocument, {size: "800x"}
+  ...
+end
+```
 
 ## Processing Images
 
@@ -75,15 +93,39 @@ docsplit_images requires delayed_job to be turned on the process.
 
 While it is processing using [https://github.com/collectiveidea/delayed_job](delayed_job), you can check if it is processing by accessing attribute ``is_processing_image``
 
-	asset.is_processing_image?
+```ruby
+asset.is_processing_image?
+```
+
+## Total number of pages
+
+* If your document file is not PDF, this will be non-zero after the internal conversion to PDF has been completed. 
+
+```ruby
+asset.number_of_images_entry
+```
+
+## Checking the number of images which has been completed
+
+```ruby
+asset.number_of_completed_images
+```
+
+## Checking the overall conversion progress
+
+```ruby
+asset.images_conversion_progress
+# => 0.45 (which is 45%)
+```
 
 ## Accessing list of images using ``document_images_list``
 
 ``document_images_list`` will return a list of URL of images converting from the document
 
-	asset.document_images_list
-	# => ["/system/myfile_revisions/files/000/000/019/images/SBA_Admin_workflow_1.png", "/system/myfile_revisions/files/000/000/019/images/SBA_Admin_workflow_2.png", ...]
-
+```ruby
+asset.document_images_list
+# => ["/system/myfile_revisions/files/000/000/019/images/SBA_Admin_workflow_1.png", "/system/myfile_revisions/files/000/000/019/images/SBA_Admin_workflow_2.png", ...]
+```
 
 Contributing to docsplit_images
 -------------

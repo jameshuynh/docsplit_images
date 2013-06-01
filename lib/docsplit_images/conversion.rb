@@ -31,7 +31,7 @@ module DocsplitImages
         else
           tempdir = File.join(Dir.tmpdir, 'docsplit')
           Docsplit.extract_pdf([doc_path], {:output => tempdir})
-          File.join(tempdir, File.basename(doc, ext) + '.pdf')
+          File.join(tempdir, File.basename(doc_path, ext) + '.pdf')
         end
         self.number_of_images_entry = Docsplit.extract_length(temp_pdf_path)
         self.save(validate: false)

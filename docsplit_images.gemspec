@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "docsplit_images"
-  s.version = "0.2.1"
+  s.version = "0.2.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["jameshuynh"]
-  s.date = "2013-06-01"
+  s.date = "2013-09-02"
   s.description = "Split Images for your document in one line of code"
   s.email = "james@rubify.com"
   s.extra_rdoc_files = [
@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
     "docsplit_images.gemspec",
     "lib/docsplit_images.rb",
     "lib/docsplit_images/conversion.rb",
+    "lib/docsplit_images/docsplit_images_job.rb",
     "lib/generators/docsplit_images/docsplit_images_generator.rb",
     "lib/generators/docsplit_images/templates/docsplit_images_migration.rb.erb",
     "test/helper.rb",
@@ -37,7 +38,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/jameshuynh/docsplit_images"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.25"
+  s.rubygems_version = "1.8.23"
   s.summary = "Split Images for your document"
 
   if s.respond_to? :specification_version then

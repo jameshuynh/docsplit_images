@@ -1,5 +1,6 @@
 module DocsplitImages
   module Conversion
+    
     def self.included(base)
       
       base.before_save :check_for_file_change
@@ -15,7 +16,7 @@ module DocsplitImages
       
       def docsplit_images
         if self.send(self.class.docsplit_attachment_name).exists? and self.is_pdf_convertible? and @file_has_changed == true
-          self.delay.docsplit_images_process
+          Delayed::Job.enqueue DocsplitImages::DocsplitImagesJob.new(self.class.name, self.id)
         end
         true
       end

@@ -16,7 +16,7 @@ module DocsplitImages
       
       def docsplit_images
         if self.send(self.class.docsplit_attachment_name).exists? and self.is_pdf_convertible? and @file_has_changed == true
-          Delayed::Job.enqueue DocsplitImages::DocsplitImagesJob.new(self.class.name, self.id)
+          DocsplitImages::DocsplitImagesJob.perform_async(self.class.name, self.id)
         end
         true
       end

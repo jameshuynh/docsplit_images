@@ -48,7 +48,7 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<paperclip>, [">= 3.1.0"])
       s.add_runtime_dependency(%q<docsplit>, ["= 0.6.4"])
-      s.add_runtime_dependency(%q<delayed_job_active_record>, ["= 0.3.2"])
+      s.add_runtime_dependency(%q<sidekiq>, [">= 3.3.0"])
       s.add_development_dependency(%q<shoulda>, [">= 0"])
       s.add_development_dependency(%q<rdoc>, ["~> 3.12"])
       s.add_development_dependency(%q<bundler>, [">= 0"])
@@ -56,7 +56,7 @@ Gem::Specification.new do |s|
     else
       s.add_dependency(%q<paperclip>, [">= 3.1.0"])
       s.add_dependency(%q<docsplit>, ["= 0.6.4"])
-      s.add_dependency(%q<delayed_job_active_record>, ["= 0.3.2"])
+      s.add_dependency(%q<sidekiq>, [">= 3.3.0"])
       s.add_dependency(%q<shoulda>, [">= 0"])
       s.add_dependency(%q<rdoc>, ["~> 3.12"])
       s.add_dependency(%q<bundler>, [">= 0"])
@@ -65,7 +65,7 @@ Gem::Specification.new do |s|
   else
     s.add_dependency(%q<paperclip>, [">= 3.1.0"])
     s.add_dependency(%q<docsplit>, ["= 0.6.4"])
-    s.add_dependency(%q<delayed_job_active_record>, ["= 0.3.2"])
+    s.add_dependency(%q<sidekiq>, [">= 3.3.0"])
     s.add_dependency(%q<shoulda>, [">= 0"])
     s.add_dependency(%q<rdoc>, ["~> 3.12"])
     s.add_dependency(%q<bundler>, [">= 0"])

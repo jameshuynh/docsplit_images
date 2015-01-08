@@ -14,4 +14,4 @@ end
 
 gem 'paperclip', '>= 3.1.0'
 gem 'docsplit', '0.6.4'
-gem 'delayed_job_active_record', '0.3.2'
+gem 'sidekiq', '>= 3.3.0'

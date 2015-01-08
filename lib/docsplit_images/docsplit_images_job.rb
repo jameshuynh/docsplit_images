@@ -1,8 +1,8 @@
-module DocsplitImages
-  class DocsplitImagesJob < Struct.new(:class_name, :id)
-    def perform
-      object = class_name.constantize.find_by_id(id)
-      object.docsplit_images_process
-    end
+class DocsplitImagesJob
+  include Sidekiq::Worker
+
+  def perform(class_name, id)
+    object = class_name.constantize.find_by_id(id)
+    object.docsplit_images_process    
   end
 end

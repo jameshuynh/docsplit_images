@@ -1,4 +1,4 @@
-class DocsplitImagesJob
+class DocsplitImages::DocsplitImagesJob
   include Sidekiq::Worker
 
   def perform(class_name, id)

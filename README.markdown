@@ -60,7 +60,7 @@ On Mac, download and install [http://www.openoffice.org/download/index.html](htt
 
 ### Install Gem
 
-	gem 'docsplit_images', :git => 'https://github.com/jameshuynh/docsplit_images.git', tag: "v0.2.3"
+	gem 'docsplit_images', :git => 'https://github.com/jameshuynh/docsplit_images.git', tag: "v0.2.4"
 
 ## Setting Up
 	

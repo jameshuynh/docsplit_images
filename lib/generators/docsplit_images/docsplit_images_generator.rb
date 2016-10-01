@@ -9,17 +9,17 @@ class DocsplitImagesGenerator < ActiveRecord::Generators::Base
   end
 
   def generate_migration
-    migration_template "docsplit_images_migration.rb.erb", "db/migrate/#{migration_file_name}"
+    migration_template "docsplit_images_migration.rb.erb", "db/migrate/#{docsplit_images_migration_file_name}"
   end
 
   protected
 
-  def migration_name
+  def docsplit_images_migration_name
     "add_docsplit_images_attribute_to_#{name.underscore.pluralize}"
   end
 
-  def migration_file_name
-    "#{migration_name}.rb"
+  def docsplit_images_migration_filename
+    "#{docsplit_images_migration_name}.rb"
   end
 
   def migration_class_name

@@ -23,6 +23,6 @@ class DocsplitImagesGenerator < ActiveRecord::Generators::Base
   end
 
   def migration_class_name
-    docsplut_images_migration_name.camelize
+    docsplit_images_migration_name.camelize
   end
 end

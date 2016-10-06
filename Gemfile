@@ -13,5 +13,5 @@ group :development do
 end
 
 gem 'paperclip', '>= 3.1.0'
-gem 'docsplit', '0.6.4'
+gem 'docsplit', '0.7.6'
 gem 'sidekiq', '>= 3.3.0'

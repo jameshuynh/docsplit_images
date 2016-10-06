@@ -4,7 +4,7 @@ module DocsplitImages
     def self.included(base)
       
       base.before_save :check_for_file_change
-      base.after_save :docsplit_images
+      base.after_commit :docsplit_images
       
       def check_for_file_change
         @file_has_changed = self.send(self.class.docsplit_attachment_name).dirty?

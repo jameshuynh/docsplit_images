@@ -4,7 +4,11 @@ module DocsplitImages
     def self.included(base)
       
       base.before_save :check_for_file_change
-      base.after_commit :docsplit_images
+      if Rails::VERSION::MAJOR >= 5
+        base.after_comit :docsplit_images
+      else
+        base.after_save :docsplit_images
+      end
       
       def check_for_file_change
         @file_has_changed = self.send(self.class.docsplit_attachment_name).dirty?

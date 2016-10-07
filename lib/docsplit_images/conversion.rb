@@ -5,7 +5,7 @@ module DocsplitImages
       
       base.before_save :check_for_file_change
       if Rails::VERSION::MAJOR >= 5
-        base.after_comit :docsplit_images
+        base.after_commit :docsplit_images
       else
         base.after_save :docsplit_images
       end

@@ -13,7 +13,7 @@ module DocsplitImages
 
     def docsplit_images
       if send(self.class.docsplit_attachment_name).exists? &&
-          is_pdf_convertible? &&
+          pdf_convertible? &&
           @file_has_changed == true
         DocsplitImages::DocsplitImagesJob.perform_async(self.class.name, id)
       end
@@ -76,7 +76,7 @@ module DocsplitImages
 
     # return the progress in term of percentage
     def images_conversion_progress
-      if is_pdf_convertible?
+      if pdf_convertible?
         return sprint(
           "%.2f",
           number_of_completed_images * 1.0 / number_of_images_entry
@@ -121,7 +121,7 @@ module DocsplitImages
     end
 
     def document_images_list
-      return [] unless is_pdf_convertible?
+      return [] unless pdf_convertible?
 
       list = []
       image_base_folder = document_images_folder

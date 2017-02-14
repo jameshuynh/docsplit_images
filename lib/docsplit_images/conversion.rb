@@ -32,7 +32,7 @@ module DocsplitImages
       doc_path = send(self.class.docsplit_attachment_name).path
       ext = File.extname(doc_path)
       temp_pdf_path = \
-        if casecmp(ext, 'pdf')
+        if ext.casecmp('pdf')
           doc_path
         else
           tempdir = File.join(Dir.tmpdir, 'docsplit')

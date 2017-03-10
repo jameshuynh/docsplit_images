@@ -41,6 +41,8 @@ module DocsplitImages
        @file_has_changed = false
       self.is_processing_image = false
       self.save(:validate => false)
+
+      after_docspliting
     end
 
     def after_docspliting

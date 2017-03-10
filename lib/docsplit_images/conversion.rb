@@ -28,10 +28,10 @@ module DocsplitImages
       FileUtils.mkdir("#{parent_dir}/images")
       doc_path = self.send(self.class.docsplit_attachment_name).path
       ext = File.extname(doc_path)
+      uuid = SecureRandom.uuid # Generate a random directory to avoid race-conditions
       temp_pdf_path = if ext.downcase == '.pdf'
         doc_path
       else
-        uuid = SecureRandom.uuid # Generate a random directory to avoid race-conditions
         tempdir = File.join(Dir.tmpdir, "docsplit/#{uuid}")
         Docsplit.extract_pdf([doc_path], {:output => tempdir})
         File.join(tempdir, File.basename(doc_path, ext) + '.pdf')
@@ -44,6 +44,8 @@ module DocsplitImages
        @file_has_changed = false
       self.is_processing_image = false
       self.save(:validate => false)
+
+      FileUtils.rm_rf(File.join(Dir.tmpdir, "docsplit/#{uuid}")) # Remove temporary files after processing
 
       after_docspliting
     end

@@ -46,9 +46,9 @@ module DocsplitImages
       # Going to convert to images
       Docsplit::ImageExtractor.new.extract(
         temp_pdf_path,
-        self.class.docsplit_attachment_options.merge(
+        self.class.docsplit_attachment_options.merge({
           output: "#{parent_dir}/images"
-        )
+        })
       )
 
       @file_has_changed = false

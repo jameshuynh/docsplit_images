@@ -26,7 +26,7 @@ module DocsplitImages
       FileUtils.mkdir("#{parent_dir}/images")
       doc_path = self.send(self.class.docsplit_attachment_name).path
       ext = File.extname(doc_path)
-      temp_pdf_path = if ext.casecmp('pdf')
+      temp_pdf_path = if ext.downcase == '.pdf'
         doc_path
       else
         tempdir = File.join(Dir.tmpdir, 'docsplit')

@@ -21,42 +21,26 @@ module DocsplitImages
     end
 
     def docsplit_images_process
-      parent_dir = File.dirname(
-        File.dirname(
-          send(self.class.docsplit_attachment_name).path
-        )
-      )
-
+      parent_dir = File.dirname(File.dirname(self.send(self.class.docsplit_attachment_name).path))
       FileUtils.rm_rf("#{parent_dir}/images")
       FileUtils.mkdir("#{parent_dir}/images")
-      doc_path = send(self.class.docsplit_attachment_name).path
+      doc_path = self.send(self.class.docsplit_attachment_name).path
       ext = File.extname(doc_path)
-      temp_pdf_path = \
-        if ext.casecmp('pdf')
-          doc_path
-        else
-          tempdir = File.join(Dir.tmpdir, 'docsplit')
-          Docsplit.extract_pdf([doc_path], output: tempdir)
-          File.join(tempdir, File.basename(doc_path, ext) + '.pdf')
-        end
-
+      temp_pdf_path = if ext.downcase == '.pdf'
+        doc_path
+      else
+        tempdir = File.join(Dir.tmpdir, 'docsplit')
+        Docsplit.extract_pdf([doc_path], {:output => tempdir})
+        File.join(tempdir, File.basename(doc_path, ext) + '.pdf')
+      end
       self.number_of_images_entry = Docsplit.extract_length(temp_pdf_path)
-      save(validate: false)
+      self.save(validate: false)
 
       # Going to convert to images
-      Docsplit::ImageExtractor.new.extract(
-        temp_pdf_path,
-        self.class.docsplit_attachment_options.merge({
-          output: "#{parent_dir}/images"
-        })
-      )
-
-      @file_has_changed = false
+      Docsplit::ImageExtractor.new.extract(temp_pdf_path, self.class.docsplit_attachment_options.merge({:output => "#{parent_dir}/images"}))
+       @file_has_changed = false
       self.is_processing_image = false
-      save(validate: false)
-
-      # callback after docspliting
-      after_docspliting
+      self.save(:validate => false)
     end
 
     def after_docspliting

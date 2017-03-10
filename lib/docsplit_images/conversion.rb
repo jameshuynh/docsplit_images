@@ -1,3 +1,5 @@
+require 'securerandom'
+
 module DocsplitImages
   module Conversion
     def self.included(base)
@@ -29,7 +31,8 @@ module DocsplitImages
       temp_pdf_path = if ext.downcase == '.pdf'
         doc_path
       else
-        tempdir = File.join(Dir.tmpdir, 'docsplit')
+        uuid = SecureRandom.uuid # Generate a random directory to avoid race-conditions
+        tempdir = File.join(Dir.tmpdir, "docsplit/#{uuid}")
         Docsplit.extract_pdf([doc_path], {:output => tempdir})
         File.join(tempdir, File.basename(doc_path, ext) + '.pdf')
       end

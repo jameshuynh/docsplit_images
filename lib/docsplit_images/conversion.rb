@@ -2,7 +2,7 @@ module DocsplitImages
   module Conversion
     def self.included(base)
       base.before_save :check_for_file_change
-      base.after_save :docsplit_images
+      base.after_commit :docsplit_images
     end
 
     def check_for_file_change

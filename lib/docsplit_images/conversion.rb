@@ -77,7 +77,7 @@ module DocsplitImages
     # return the progress in term of percentage
     def images_conversion_progress
       if pdf_convertible?
-        return sprint(
+        return sprintf(
           "%.2f",
           number_of_completed_images * 1.0 / number_of_images_entry
         ).to_f

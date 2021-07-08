@@ -50,13 +50,13 @@ aptitude install pdftk
 	
 On the Mac, you can download a [http://www.pdflabs.com/docs/install-pdftk/](recent installer for the binary). Without pdftk installed, you can use Docsplit, but won't be able to split apart a multi-page PDF into single-page PDFs. 
 
-#### 6. (Optional) Install OpenOffice. On Linux, use aptitude, apt-get or yum:
+#### 6. (Optional) Install LibreOffice. On Linux, use aptitude, apt-get or yum:
   
 ```bash
-aptitude install openoffice.org openoffice.org-java-common
+aptitude install libreoffice
 ```  
 
-On Mac, download and install [http://www.openoffice.org/download/index.html](http://www.openoffice.org/download/index.html).
+On Mac, download and install [http://www.libreoffice.org/download](http://www.libreoffice.org/download).
 
 ### Install Gem
 
@@ -91,7 +91,7 @@ docsplit_images requires sidekiq to be turned on the process.
 
 	[bundle exec] sidekiq
 
-While it is processing using [https://github.com/collectiveidea/delayed_job](delayed_job), you can check if it is processing by accessing attribute ``is_processing_image``
+While it is processing using [https://github.com/mperham/sidekiq](sidekiq), you can check if it is processing by accessing attribute ``is_processing_image``
 
 ```ruby
 asset.is_processing_image?

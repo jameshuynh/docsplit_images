@@ -7,15 +7,10 @@ source "http://rubygems.org"
 # Include everything needed to run rake, tests, features, etc.
 group :development do
   gem "shoulda", ">= 0"
-  gem "rdoc", "~> 3.12"
+  gem "rdoc", "~> 6.3.2"
   gem "bundler"
-  gem "jeweler", "~> 1.8.4"
+  gem "jeweler", "~> 2.3.9"
 end
 
-gem 'paperclip', '>= 3.1.0'
-<<<<<<< HEAD
 gem 'docsplit', '0.7.6'
-=======
-gem 'docsplit', '0.6.4'
->>>>>>> b3e54c90fd4de0a3950a58d080ee873e85ab8140
-gem 'sidekiq', '>= 3.3.0'
+gem 'sidekiq', '>= 6.2.1'
